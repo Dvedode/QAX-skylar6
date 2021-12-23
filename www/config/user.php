@@ -1,18 +1,17 @@
 <?php  
-session_start();  
-//检测是否登录，若没登录则转向登录界面  
+session_start();
+
+//Check login
 if(!isset($_SESSION['userid'])){  
-    header("Location:login.html");  
+    header("Location:http://git-core03.qianxin-inc.cn:8080/");  
     exit();  
 }  
-//包含数据库连接文件  
+
+//login information
 include('conn.php');  
-$userid = $_SESSION['userid'];  
-$username = $_SESSION['username'];  
+$userid = $_SESSION['userid'];  //chenge
+$username = $_SESSION['username'];   //Test#77@Skyeye
 $user_query = mysql_query("select * from user_list where userid = '$userid' limit 1");  
 $row = mysql_fetch_array($user_query);  
-echo '用户信息：<br />';  
-echo '用户ID：',$userid,'<br />';  //chenge
-echo '用户名：',$username,'<br />';  、//Test#77@Skyeye
-echo '<a href="login.php?action=logout">注销</a> 登录<br />';  
+
 ?>
